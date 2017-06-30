@@ -6,9 +6,9 @@ def create_app():
     app.debug = True
 
     from index_view import index_view
-    from product_view import product_view
+    from app_view import app_view
     app.register_blueprint(index_view, url_prefix='/')
-    app.register_blueprint(index_view, url_prefix='/product')
+    app.register_blueprint(app_view, url_prefix='/app')
 
     return app
 
