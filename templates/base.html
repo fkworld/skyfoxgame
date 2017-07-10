@@ -10,12 +10,11 @@
 
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="/product">XXXX</a></li>
-                <li><a href="#">XXXX</a></li>
+                <li><a href="{{ url_for('index_view.index') }}">INDEX</a></li>
+                <li><a href="{{ url_for('app_view.index') }}">APP</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">XXXX</a></li>
-                <li><a href="#">XXXX</a></li>
+                <li><a href="{{ url_for('index_view.index') }}">CONTACT US</a></li>
             </ul>
         </div>
     </div>
