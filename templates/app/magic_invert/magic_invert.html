@@ -1,0 +1,58 @@
+{% extends "app/app_base.html" %}
+
+{% block app_link %}
+<a href="{{ url_for('app_view.magic_invert') }}">Magic Invert</a>
+{% endblock %}
+
+{% block app_name %}
+<h1>Magic Invert</h1>
+{% endblock %}
+
+{% block app_download %}
+<div class="row">
+    <div class="col-sm-5">
+        {% include 'app/magic_invert/magic_invert_download.html' %}
+    </div>
+</div>
+{% endblock %}
+
+{% block app_pictrue %}
+<div class="row">
+    <div class="col-sm-3">
+        <img src="{{ url_for("static", filename="app/magic_invert/magic_invert_1.png") }}" class="img-responsive img-rounded" alt="Responsive image">
+    </div>
+    <div class="col-sm-3">
+        <img src="{{ url_for("static", filename="app/magic_invert/magic_invert_1.png") }}" class="img-responsive img-rounded" alt="Responsive image">
+    </div>
+    <div class="col-sm-3">
+        <img src="{{ url_for("static", filename="app/magic_invert/magic_invert_1.png") }}" class="img-responsive img-rounded" alt="Responsive image">
+    </div>
+    <div class="col-sm-3">
+        <img src="{{ url_for("static", filename="app/magic_invert/magic_invert_1.png") }}" class="img-responsive img-rounded" alt="Responsive image">
+    </div>
+</div>
+{% endblock %}
+
+{% block app_text %}
+<div class="row">
+    <div class="col-sm-6">
+        {% include 'app/magic_invert/magic_invert_text.html' %}
+    </div>
+</div>
+{% endblock %}
+
+{% block app_video %}
+<div class="row">
+    <div class="col-sm-6">
+        
+    </div>
+</div>
+{% endblock %}
+
+{% block app_download_ps %}
+<div class="row">
+    <div class="col-sm-5">
+        {% include 'app/magic_invert/magic_invert_download.html' %}
+    </div>
+</div>
+{% endblock %}

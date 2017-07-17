@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-sm-6">
+        <img src="{{ url_for("static", filename="app/flick_bird/flick_bird_5.jpg") }}" class="img-responsive img-rounded" alt="Responsive image">
+    </div>
+    <div class="col-sm-1">
+
+    </div>
+    <div class="col-sm-5">
+        <h3>Flick Bird</h3>
+        {% include 'app/flick_bird/flick_bird_text.html' %}
+        {% include 'app/flick_bird/flick_bird_download.html' %}
+    </div>
+</div>

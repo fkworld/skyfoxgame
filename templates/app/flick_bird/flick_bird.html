@@ -1,0 +1,72 @@
+{% extends "app/app_base.html" %}
+
+{% block app_link %}
+<a href="{{ url_for('app_view.flick_bird') }}">Flick Bird</a>
+{% endblock %}
+
+{% block app_name %}
+<h1>Flick Bird</h1>
+{% endblock %}
+
+{% block app_download %}
+<div class="row">
+    <div class="col-sm-5">
+        <div class="col-sm-4">
+            <a href="{{ url_for('app_view.flick_bird') }}">
+                <img src="{{ url_for("static", filename="website/app_store.png") }}" class="img-responsive img-rounded" alt="Responsive image">
+            </a>
+        </div>
+        <div class="col-sm-4">
+            <a href="{{ url_for('app_view.flick_bird') }}">
+                <img src="{{ url_for("static", filename="website/google_play.png") }}" class="img-responsive img-rounded" alt="Responsive image">
+            </a>
+        </div>
+        <div class="col-sm-4">
+            <a href="{{ url_for('app_view.flick_bird') }}">
+                <img src="{{ url_for("static", filename="website/taptap.png") }}" class="img-responsive img-rounded" alt="Responsive image">
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block app_pictrue %}
+<div class="row">
+    <div class="col-sm-3">
+        <img src="{{ url_for("static", filename="app/flick_bird/flick_bird_1.png") }}" class="img-responsive img-rounded" alt="Responsive image">
+    </div>
+    <div class="col-sm-3">
+        <img src="{{ url_for("static", filename="app/flick_bird/flick_bird_2.png") }}" class="img-responsive img-rounded" alt="Responsive image">
+    </div>
+    <div class="col-sm-3">
+        <img src="{{ url_for("static", filename="app/flick_bird/flick_bird_3.png") }}" class="img-responsive img-rounded" alt="Responsive image">
+    </div>
+    <div class="col-sm-3">
+        <img src="{{ url_for("static", filename="app/flick_bird/flick_bird_4.png") }}" class="img-responsive img-rounded" alt="Responsive image">
+    </div>
+</div>
+{% endblock %}
+
+{% block app_text %}
+<div class="row">
+    <div class="col-sm-6">
+        {% include 'app/flick_bird/flick_bird_text.html' %}
+    </div>
+</div>
+{% endblock %}
+
+{% block app_video %}
+<div class="row">
+    <div class="col-sm-6">
+        <embed height=auto width=100% quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=11440502&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed>
+    </div>
+</div>
+{% endblock %}
+
+{% block app_download_ps %}
+<div class="row">
+    <div class="col-sm-5">
+        {% include 'app/flick_bird/flick_bird_download.html' %}
+    </div>
+</div>
+{% endblock %}

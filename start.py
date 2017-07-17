@@ -7,7 +7,7 @@ def create_app():
 
     from index_view import index_view
     from app_view import app_view
-    app.register_blueprint(index_view, url_prefix='/')
+    app.register_blueprint(index_view, url_prefix='') # 注意此处不能为'/'，应为空
     app.register_blueprint(app_view, url_prefix='/app')
 
     return app

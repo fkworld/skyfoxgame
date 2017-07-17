@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block page_left_head %}
+<span class="glyphicon glyphicon-home"></span>
+<a href="/">SKYFOX</a>
+<span class="glyphicon glyphicon-chevron-right"></span>
+<a href="{{ url_for('index_view.contact_us') }}">CONTACT US</a>
+{% endblock %}
+
+{% block page_left_body %}
+<div class="row">
+    <div class="col-sm-12">
+		<h1>Contact us</h1>
+		<hr>
+		<h3>e-mail</h3>
+		<p>contact.skyfox@gmail.com</p>
+		<h3>facebook</h3>
+		<p><a href="https://www.facebook.com/skyfoxgame233/">https://www.facebook.com/skyfoxgame233/</a></p>
+		<h3>twitter</h3>
+		<p><a href="https://twitter.com/SKYFOX_GAME/">https://twitter.com/SKYFOX_GAME/</a></p>
+    </div>
+</div>
+{% endblock %}

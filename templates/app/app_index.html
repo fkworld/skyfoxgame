@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block page_left_head %}
+<span class="glyphicon glyphicon-home"></span>
+<a href="/">SKYFOX</a>
+<span class="glyphicon glyphicon-chevron-right"></span>
+<a href="{{ url_for('app_view.index') }}">APP</a>
+{% endblock %}
+
+{% block page_left_body %}
+<div class="row">
+    <div id="apps" class="col-sm-12">
+        <div class="col-sm-2">
+            <a href="{{ url_for('app_view.flick_bird') }}">
+                <img src="{{ url_for("static", filename="app/flick_bird/flick_bird_icon.png") }}" class="img-responsive img-rounded" alt="Responsive image">
+            </a>
+        </div>
+        <div class="col-sm-2">
+            <a href="{{ url_for('app_view.magic_invert') }}">
+                <img src="{{ url_for("static", filename="app/magic_invert/magic_invert_icon.png") }}" class="img-responsive img-rounded" alt="Responsive image">
+            </a>
+        </div>
+    </div>
+</div>
+<hr>
+<div id="flick_bird">
+    {% include 'app/flick_bird/flick_bird_show.html' %}
+</div>
+<hr>
+<div id="magic_invert">
+    {% include 'app/magic_invert/magic_invert_show.html' %}
+</div>
+{% endblock %}
