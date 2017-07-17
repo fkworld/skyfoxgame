@@ -13,3 +13,7 @@ def flick_bird():
 @app_view.route('/magic_invert')
 def magic_invert():
     return render_template('/app/magic_invert/magic_invert.html')
+
+@app_view.route('/walking_alien')
+def walking_alien():
+    return render_template('/app/walking_alien/walking_alien.html')
