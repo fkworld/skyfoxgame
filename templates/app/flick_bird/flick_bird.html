@@ -11,21 +11,7 @@
 {% block app_download %}
 <div class="row">
     <div class="col-sm-5">
-        <div class="col-sm-4">
-            <a href="{{ url_for('app_view.flick_bird') }}">
-                <img src="{{ url_for("static", filename="website/app_store.png") }}" class="img-responsive img-rounded" alt="Responsive image">
-            </a>
-        </div>
-        <div class="col-sm-4">
-            <a href="{{ url_for('app_view.flick_bird') }}">
-                <img src="{{ url_for("static", filename="website/google_play.png") }}" class="img-responsive img-rounded" alt="Responsive image">
-            </a>
-        </div>
-        <div class="col-sm-4">
-            <a href="{{ url_for('app_view.flick_bird') }}">
-                <img src="{{ url_for("static", filename="website/taptap.png") }}" class="img-responsive img-rounded" alt="Responsive image">
-            </a>
-        </div>
+        {% include 'app/flick_bird/flick_bird_download.html' %}
     </div>
 </div>
 {% endblock %}
