@@ -1,15 +1,13 @@
-<div class="col-sm-4">
-    <a href="#">
-        <img src="{{ url_for("static", filename="website/app_store.png") }}" class="img-responsive img-rounded" alt="Responsive image">
-    </a>
-</div>
-<div class="col-sm-4">
-    <a href="#">
-        <img src="{{ url_for("static", filename="website/google_play.png") }}" class="img-responsive img-rounded" alt="Responsive image">
-    </a>
-</div>
-<div class="col-sm-4">
-    <a href="#">
-        <img src="{{ url_for("static", filename="website/taptap.png") }}" class="img-responsive img-rounded" alt="Responsive image">
-    </a>
-</div>
+{% extends "app/app_download_base.html" %}
+
+{% block app_store %}
+<a href="#">
+{% endblock %}
+
+{% block google_play %}
+<a href="#">
+{% endblock %}
+
+{% block taptap %}
+<a href="#">
+{% endblock %}
