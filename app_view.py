@@ -17,3 +17,7 @@ def magic_invert():
 @app_view.route('/walking_alien')
 def walking_alien():
     return render_template('/app/walking_alien/walking_alien.html')
+
+@app_view.route('/girls_foosball')
+def girls_foosball():
+    return render_template('/app/girls_foosball/girls_foosball.html')

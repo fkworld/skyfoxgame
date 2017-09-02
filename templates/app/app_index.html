@@ -24,6 +24,11 @@
             <img src="{{ url_for("static", filename="app/magic_invert/magic_invert_icon.png") }}" class="img-responsive img-rounded" alt="Responsive image">
         </a>
     </div>
+    <div class="col-xs-4 col-sm-2">
+        <a href="{{ url_for('app_view.girls_foosball') }}">
+            <img src="{{ url_for("static", filename="app/girls_foosball/girls_foosball_icon.png") }}" class="img-responsive img-rounded" alt="Responsive image">
+        </a>
+    </div>
 </div>
 <hr>
 <div id="flick_bird">
@@ -36,5 +41,9 @@
 <hr>
 <div id="magic_invert">
     {% include 'app/magic_invert/magic_invert_show.html' %}
+</div>
+<hr>
+<div id="girls_foosball">
+    {% include 'app/girls_foosball/girls_foosball_show.html' %}
 </div>
 {% endblock %}
