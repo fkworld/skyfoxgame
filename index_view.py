@@ -9,3 +9,7 @@ def index():
 @index_view.route('/contact_us')
 def contact_us():
     return render_template('contact_us.html')
+
+@index_view.route('/privacy_policy')
+def privacy_policy():
+    return render_template('privacy_policy.html')
