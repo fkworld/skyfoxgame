@@ -1,4 +1,5 @@
 from flask import Flask,render_template,redirect,request,url_for,flash,Blueprint,g
+from App import App
 
 index_view = Blueprint('index_view', __name__, template_folder='templates')
 
