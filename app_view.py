@@ -2,7 +2,7 @@ from flask import Flask,render_template,redirect,request,url_for,flash,Blueprint
 from App import App
 
 app_view = Blueprint('app_view', __name__, template_folder='templates')
-games = ["Flick Bird","Girls Foosball","Back to Back"]
+games = ["Flick Bird","Girls Foosball","Back to Back","Magic Invert"]
 
 @app_view.route('/', methods=['GET','POST'])
 def index():

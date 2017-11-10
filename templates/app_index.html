@@ -33,19 +33,46 @@
     <div class="col-sm-6">
         <div class="col-xs-12">
             <div class="col-xs-4">
-                <a href="{{ app.download_appstore }}">
-                    <img src="{{ url_for("static", filename="website/appstore.png") }}" class="img-responsive img-rounded" alt="Responsive image">
-                </a>
+                {% with %}
+                    {% if app.download_appstore == "N" %}
+                        {% set href="#" %}
+                        {% set src=url_for("static", filename="website/logo_long_white.png") %}
+                    {% else %}
+                        {% set href=app.download_googleplay %}
+                        {% set src=url_for("static", filename="website/appstore.png") %}
+                    {% endif %}
+                    <a href="{{ href }}">
+                        <img src="{{ src }}" class="img-responsive img-rounded" alt="Responsive image">
+                    </a>
+                {% endwith %}
             </div>
             <div class="col-xs-4">
-                <a href="{{ app.download_googleplay }}">
-                    <img src="{{ url_for("static", filename="website/googleplay.png") }}" class="img-responsive img-rounded" alt="Responsive image">
-                </a>
+                {% with %}
+                    {% if app.download_googleplay == "N" %}
+                        {% set href="#" %}
+                        {% set src=url_for("static", filename="website/logo_long_white.png") %}
+                    {% else %}
+                        {% set href=app.download_googleplay %}
+                        {% set src=url_for("static", filename="website/googleplay.png") %}
+                    {% endif %}
+                    <a href="{{ href }}">
+                        <img src="{{ src }}" class="img-responsive img-rounded" alt="Responsive image">
+                    </a>
+                {% endwith %}
             </div>
             <div class="col-xs-4">
-                <a href="{{ app.download_taptap }}">
-                    <img src="{{ url_for("static", filename="website/taptap.png") }}" class="img-responsive img-rounded" alt="Responsive image">
-                </a>
+                {% with %}
+                    {% if app.download_taptap == "N" %}
+                        {% set href="#" %}
+                        {% set src=url_for("static", filename="website/logo_long_white.png") %}
+                    {% else %}
+                        {% set href=app.download_googleplay %}
+                        {% set src=url_for("static", filename="website/taptap.png") %}
+                    {% endif %}
+                    <a href="{{ href }}">
+                        <img src="{{ src }}" class="img-responsive img-rounded" alt="Responsive image">
+                    </a>
+                {% endwith %}
             </div>
         </div>
     </div>
@@ -61,7 +88,7 @@
 
     </div>
     <div class="col-sm-5">
-        {{ app.text }}
+        {{ app.text|safe }}
     </div>
 </div>
 <hr>

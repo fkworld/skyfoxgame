@@ -15,6 +15,7 @@ class App(object):
             txt_file = open(file_url,"r")
             txts = txt_file.readlines()
             self.download_appstore = txts.pop(0)
+            print(self.download_appstore.replace("\n",""))
             self.download_googleplay = txts.pop(0)
             self.download_taptap = txts.pop(0)
             self.text = txts
