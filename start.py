@@ -1,9 +1,14 @@
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = '42'
     app.debug = True
+
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///server.db'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+    db.init_app(app)
 
     from index_view import index_view
     from app_view import app_view
@@ -12,6 +17,7 @@ def create_app():
 
     return app
 
+db = SQLAlchemy()
 app = create_app()
 
 if __name__ == '__main__':

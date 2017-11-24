@@ -1,0 +1,10 @@
+{% for app in apps %}
+<div class="row">
+    {{app.cname}}
+    <br>
+    {{app.ename}}
+    <br>
+    <img src="{{ app.icon_url }}" class="img-responsive" alt="Responsive image" >
+</div>
+<hr>
+{% endfor %}
