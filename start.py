@@ -16,6 +16,7 @@ def create_app():
     app.register_blueprint(index_view, url_prefix='') # 注意此处不能为'/'，应为空
     app.register_blueprint(app_view, url_prefix='/app')
     app.register_blueprint(admin_view, url_prefix='/ilovefangchunpin')
+
     return app
 
 db = SQLAlchemy()
@@ -23,4 +24,7 @@ app = create_app()
 
 if __name__ == '__main__':
     # app = create_app() # gunicorn方式启动需要把这句话放在外面
+    from init_db import init_db
+    # 初始化数据库的表
+    init_db()
     app.run()
