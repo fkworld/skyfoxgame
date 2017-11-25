@@ -1,21 +1,21 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField,SubmitField,TextAreaField
-from wtforms.validators import Required,Length
+from wtforms.validators import Required,Length,URL,Optional
 
 class AppForm(FlaskForm):
-    cname = StringField("中文名", validators=[Required(),Length(1,64)])
-    ename = StringField("英文名", validators=[Required(),Length(1,64)])
-    dappstore = StringField("ios下载地址", validators=[Length(1,64)])
-    dgoogle = StringField("googleplay下载地址", validators=[Length(1,64)])
-    dtaptap = StringField("taptap地址", validators=[Length(1,64)])
+    ename = StringField(u"中文名", validators=[Required(),Length(1,64)])
+    cname = StringField(u"英文名", validators=[Optional(),Length(1,64)])
+    dappstore = StringField(u"appstore下载地址", validators=[Optional(),URL(u"需要输入一个合理的URL")])
+    dgoogle = StringField(u"googleplay下载地址", validators=[Optional(),URL()])
+    dtaptap = StringField(u"taptap地址", validators=[Optional(),URL()])
     ctext = TextAreaField()
     etext = TextAreaField()
 
-    submit = SubmitField("提交")
+    submit = SubmitField(u"提交")
 
     def form_to_object(self, app):
-        app.cname = self.cname.data
         app.ename = self.ename.data
+        app.cname = self.cname.data
         app.dappstore = self.dappstore.data
         app.dgoogle = self.dgoogle.data
         app.dtaptap = self.dtaptap.data

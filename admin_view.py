@@ -18,6 +18,7 @@ def add_app():
     form = AppForm()
     app = App()
     if form.validate_on_submit():
+        print("gggg")
         form.form_to_object(app)
         app.set_icon_url()
         app.set_show_url()
