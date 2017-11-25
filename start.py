@@ -25,6 +25,5 @@ app = create_app()
 if __name__ == '__main__':
     # app = create_app() # gunicorn方式启动需要把这句话放在外面
     from init_db import init_db
-    # 初始化数据库的表
-    init_db()
+    init_db(app,db)
     app.run()

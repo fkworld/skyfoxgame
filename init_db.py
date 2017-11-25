@@ -1,6 +1,3 @@
-from start import app, db
-from ModelApp import App
-
-def init_db():
+def init_db(app,db):
     with app.app_context():
         db.create_all()
