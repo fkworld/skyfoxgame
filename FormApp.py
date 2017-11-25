@@ -3,8 +3,8 @@ from wtforms import StringField,SubmitField,TextAreaField
 from wtforms.validators import Required,Length,URL,Optional
 
 class AppForm(FlaskForm):
-    ename = StringField(u"中文名", validators=[Required(),Length(1,64)])
-    cname = StringField(u"英文名", validators=[Optional(),Length(1,64)])
+    ename = StringField(u"英文名", validators=[Required(),Length(1,64)])
+    cname = StringField(u"中文名", validators=[Optional(),Length(1,64)])
     dappstore = StringField(u"appstore下载地址", validators=[Optional(),URL(u"需要输入一个合理的URL")])
     dgoogle = StringField(u"googleplay下载地址", validators=[Optional(),URL()])
     dtaptap = StringField(u"taptap地址", validators=[Optional(),URL()])
@@ -23,8 +23,8 @@ class AppForm(FlaskForm):
         app.etext = self.etext.data
 
     def object_to_form(self,app):
-        self.cname.data = app.cname
         self.ename.data = app.ename
+        self.cname.data = app.cname
         self.dappstore.data = app.dappstore
         self.dgoogle.data = app.dgoogle
         self.dtaptap.data = app.dtaptap

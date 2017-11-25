@@ -16,13 +16,25 @@
     <table class="table table-hover table-bordered">
         <tr>
             <td>序号</td>
-            <td>中文名</td>
+            <td>名称</td>
+            <td>下载</td>
             <td>操作</td>
         </tr>
         {% for app in apps %}
         <tr>
             <td>{{ app.id }}</td>
-            <td>{{ app.ename }}</td>
+            <td>
+                英文名:{{ app.ename }}
+                <br>
+                中文名:{{ app.cname }}
+            </td>
+            <td>
+                TapTap:{{ app.dtaptap }}
+                <br>
+                AppStore:{{ app.dappstore }}
+                <br>
+                GooglePlay:{{ app.dgoogleplay }}
+            </td>
             <td>
                 <a href="{{ url_for('admin_view.edit_app', app_id=app.id) }}"><span class="glyphicon glyphicon-pencil"></span>编辑</a>
                 <a href="{{ url_for('admin_view.delete_app', app_id=app.id) }}"><span class="glyphicon glyphicon-trash"></span>删除</a>                  
