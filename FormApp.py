@@ -19,3 +19,11 @@ class AppForm(FlaskForm):
         app.dgoogle = self.dgoogle.data
         app.dtaptap = self.dtaptap.data
         app.text = self.text.data
+
+    def object_to_form(self,app):
+        self.cname.data = app.cname
+        self.ename.data = app.ename
+        self.dappstore.data = app.dappstore
+        self.dgoogle.data = app.dgoogle
+        self.dtaptap.data = app.dtaptap
+        self.text.data = app.text

@@ -20,9 +20,22 @@ class App(db.Model):
         db.session.add(self)
         db.session.commit()
 
+    # 删除app
+    def delete_app(self):
+        db.session.delete(self)
+        db.session.commit()
+    
+    # 更新app
+    def update_app(self):
+        db.session.commit()
+
     # 查询所有app
     def search_all(self):
         return self.query.all()
+
+    # 根据id查询app
+    def search_by_id(self,id):
+        return self.query.filter_by(id=id).first_or_404()
 
     # 获取icon或者show的filename
     def get_filename(self, icon_or_show):

@@ -12,9 +12,10 @@ def create_app():
 
     from index_view import index_view
     from app_view import app_view
+    from admin_view import admin_view
     app.register_blueprint(index_view, url_prefix='') # 注意此处不能为'/'，应为空
     app.register_blueprint(app_view, url_prefix='/app')
-
+    app.register_blueprint(admin_view, url_prefix='/ilovefangchunpin')
     return app
 
 db = SQLAlchemy()
