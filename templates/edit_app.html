@@ -17,14 +17,14 @@
             <div class="row">
                 <div class="col-xs-6">
                     <div class="input-group">
-                        {{ form.cname.label(class="input-group-addon") }}
-                        {{ form.cname(type="text",class="form-control") }}
+                        {{ form.ename.label(class="input-group-addon") }}
+                        {{ form.ename(type="text",class="form-control",placeholder="此项必填写，后面的项目均为选填") }}
                     </div>
                 </div>
                 <div class="col-xs-6">
                     <div class="input-group">
-                        {{ form.ename.label(class="input-group-addon") }}
-                        {{ form.ename(type="text",class="form-control") }}
+                        {{ form.cname.label(class="input-group-addon") }}
+                        {{ form.cname(type="text",class="form-control") }}
                     </div>
                 </div>
             </div>
@@ -34,7 +34,7 @@
                 <div class="col-xs-12">
                     <div class="input-group">
                         {{ form.dappstore.label(class="input-group-addon") }}
-                        {{ form.dappstore(type="text",class="form-control") }}
+                        {{ form.dappstore(type="text",class="form-control",placeholder="如果还没有上线，这里为空即可以，下同") }}
                     </div>
                 </div>
             </div>
