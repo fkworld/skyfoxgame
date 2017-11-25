@@ -23,6 +23,7 @@ def test():
     if form.validate_on_submit():
         form.form_to_object(app)
         app.set_icon_url()
+        app.set_show_url()
         app.add_app()
         return redirect(url_for('index_view.index'))
     return render_template('edit_app.html',form=form,title="新建APP")
