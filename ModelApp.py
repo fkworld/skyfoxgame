@@ -13,7 +13,8 @@ class App(db.Model):
     dappstore = db.Column(db.String(64))            # appstore下载地址
     dgoogle = db.Column(db.String(64))              # googleplay下载地址
     dtaptap = db.Column(db.String(64))              # taptap下载地址
-    text = db.Column(db.Text)                       # 文字介绍
+    ctext = db.Column(db.Text)                      # 中文文字介绍
+    etext = db.Column(db.Text)                      # 英文文字介绍
 
     # 添加app
     def add_app(self):
@@ -28,7 +29,7 @@ class App(db.Model):
     # 更新app
     def update_app(self):
         db.session.commit()
-
+        
     # 查询所有app
     def search_all(self):
         return self.query.all()

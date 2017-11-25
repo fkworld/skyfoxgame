@@ -8,7 +8,8 @@ class AppForm(FlaskForm):
     dappstore = StringField("ios下载地址", validators=[Length(1,64)])
     dgoogle = StringField("googleplay下载地址", validators=[Length(1,64)])
     dtaptap = StringField("taptap地址", validators=[Length(1,64)])
-    text = TextAreaField()
+    ctext = TextAreaField()
+    etext = TextAreaField()
 
     submit = SubmitField("提交")
 
@@ -18,7 +19,8 @@ class AppForm(FlaskForm):
         app.dappstore = self.dappstore.data
         app.dgoogle = self.dgoogle.data
         app.dtaptap = self.dtaptap.data
-        app.text = self.text.data
+        app.ctext = self.ctext.data
+        app.etext = self.etext.data
 
     def object_to_form(self,app):
         self.cname.data = app.cname
@@ -26,4 +28,5 @@ class AppForm(FlaskForm):
         self.dappstore.data = app.dappstore
         self.dgoogle.data = app.dgoogle
         self.dtaptap.data = app.dtaptap
-        self.text.data = app.text
+        self.ctext.data = app.ctext
+        self.etext.data = app.etext

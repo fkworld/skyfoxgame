@@ -22,7 +22,7 @@
         {% for app in apps %}
         <tr>
             <td>{{ app.id }}</td>
-            <td>{{ app.cname }}</td>
+            <td>{{ app.ename }}</td>
             <td>
                 <a href="{{ url_for('admin_view.edit_app', app_id=app.id) }}"><span class="glyphicon glyphicon-pencil"></span>编辑</a>
                 <a href="{{ url_for('admin_view.delete_app', app_id=app.id) }}"><span class="glyphicon glyphicon-trash"></span>删除</a>                  
