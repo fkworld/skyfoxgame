@@ -11,40 +11,60 @@
 <h2>{{ title }}</h2>
 <hr>
 <div>
-    <form method='POST' class="form">
+    <form method='POST'>
         {{ form.hidden_tag() }}
         <div class="form-group">
             <div class="row">
-                <div class="col-sm-4">
-                {{ form.cname.label }}
-                {{ form.cname() }}
+                <div class="col-xs-6">
+                    <div class="input-group">
+                        {{ form.cname.label(class="input-group-addon") }}
+                        {{ form.cname(type="text",class="form-control") }}
+                    </div>
                 </div>
-                <div class="col-sm-4">
-                {{ form.ename.label }}
-                {{ form.ename() }}
-                <div class="col-sm-4"></div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                {{ form.dios.label }}
-                {{ form.dios() }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                {{ form.dgoogle.label }}
-                {{ form.dgoogle() }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                {{ form.dtaptap.label }}
-                {{ form.dtaptap() }}
+                <div class="col-xs-6">
+                    <div class="input-group">
+                        {{ form.ename.label(class="input-group-addon") }}
+                        {{ form.ename(type="text",class="form-control") }}
+                    </div>
                 </div>
             </div>
         </div>
         <div class="form-group">
-            {{ form.submit(class="btn btn-default") }}
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="input-group">
+                        {{ form.dios.label(class="input-group-addon") }}
+                        {{ form.dios(type="text",class="form-control") }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="input-group">
+                        {{ form.dgoogle.label(class="input-group-addon") }}
+                        {{ form.dgoogle(type="text",class="form-control") }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="input-group">
+                        {{ form.dtaptap.label(class="input-group-addon") }}
+                        {{ form.dtaptap(type="text",class="form-control") }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-6">
+                    {{ form.submit(class="form-control btn btn-success") }}
+                </div>
+            </div>
         </div>
     </form>
 </div>
