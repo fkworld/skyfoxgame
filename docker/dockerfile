@@ -5,8 +5,8 @@ MAINTAINER fengyong fkworld@foxmail.com
 WORKDIR app
 VOLUME ["/app"]
 COPY requirements.txt /app/
-RUN python3 -m pip3 install --upgrade pip3
-RUN pip3 install -r /app/requirements.txt
+RUN python3 -m pip install --upgrade pip
+RUN pip install -r /app/requirements.txt
 
 EXPOSE 80
 
