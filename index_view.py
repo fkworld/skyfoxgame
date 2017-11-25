@@ -13,4 +13,9 @@ def contact_us():
 @index_view.route('/privacy_policy')
 def privacy_policy():
     return render_template('privacy_policy.html')
+
+@index_view.route('/init_db')
+def init_db():
+    from init_db import init_db
+    init_db()
         
