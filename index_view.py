@@ -18,4 +18,4 @@ def privacy_policy():
 def init_db():
     from init_db import init_db
     init_db()
-        
+    return redirect(url_for("index_view.index"))
