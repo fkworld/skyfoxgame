@@ -16,6 +16,7 @@ class App(db.Model):
     dtaptap = db.Column(db.String(64))              # taptap下载地址
     ctext = db.Column(db.Text)                      # 中文文字介绍
     etext = db.Column(db.Text)                      # 英文文字介绍
+    sequence = db.Column(db.Integer, default=0)        # 次序，同级的随机排列，0为最高
 
     # 添加app
     def add_app(self):
@@ -34,6 +35,10 @@ class App(db.Model):
     # 查询所有app
     def search_all(self):
         return self.query.all()
+
+    # 按照sequence的等级排序
+    def order_by_sequence(self, apps):
+        apps.sort(key=lambda x:x.sequence)
 
     # 根据id查询app
     def search_by_id(self,id):

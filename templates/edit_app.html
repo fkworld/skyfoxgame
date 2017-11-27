@@ -15,19 +15,29 @@
         {{ form.hidden_tag() }}
         <div class="form-group">
             <div class="row">
-                <div class="col-xs-4">
+                <div class="col-sm-8">
                     <div class="input-group">
                         {{ form.projectcode.label(class="input-group-addon") }}
                         {{ form.projectcode(type="text",class="form-control",placeholder="此项请必填") }}
                     </div>
                 </div>
-                <div class="col-xs-4">
+                <div class="col-sm-4">
+                    <div class="input-group">
+                        {{ form.sequence.label(class="input-group-addon") }}
+                        {{ form.sequence(type="text",class="form-control",placeholder="请填入数字；0为最高级") }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-6">
                     <div class="input-group">
                         {{ form.ename.label(class="input-group-addon") }}
                         {{ form.ename(type="text",class="form-control") }}
                     </div>
                 </div>
-                <div class="col-xs-4">
+                <div class="col-sm-6">
                     <div class="input-group">
                         {{ form.cname.label(class="input-group-addon") }}
                         {{ form.cname(type="text",class="form-control") }}
@@ -37,7 +47,7 @@
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-xs-12">
+                <div class="col-sm-12">
                     <div class="input-group">
                         {{ form.dappstore.label(class="input-group-addon") }}
                         {{ form.dappstore(type="text",class="form-control",placeholder="如果还没有上线，这里为空即可以，下同") }}
@@ -47,7 +57,7 @@
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-xs-12">
+                <div class="col-sm-12">
                     <div class="input-group">
                         {{ form.dgoogle.label(class="input-group-addon") }}
                         {{ form.dgoogle(type="text",class="form-control") }}
@@ -57,7 +67,7 @@
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-xs-12">
+                <div class="col-sm-12">
                     <div class="input-group">
                         {{ form.dtaptap.label(class="input-group-addon") }}
                         {{ form.dtaptap(type="text",class="form-control") }}
@@ -87,7 +97,7 @@
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-xs-6">
+                <div class="col-sm-6">
                     {{ form.submit(class="form-control btn btn-success") }}
                 </div>
             </div>

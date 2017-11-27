@@ -8,4 +8,5 @@ def index():
     from ModelApp import App
     app = App()
     apps = app.search_all()
+    app.order_by_sequence(apps)
     return render_template('/app_index.html',apps=apps)

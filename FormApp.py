@@ -1,9 +1,10 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,SubmitField,TextAreaField
+from wtforms import StringField,SubmitField,TextAreaField,IntegerField
 from wtforms.validators import Required,Length,URL,Optional
 
 class AppForm(FlaskForm):
     projectcode = StringField(u"项目代码", validators=[Required(),Length(1,64)])
+    sequence = IntegerField(u"次序等级", validators=[Optional()])
     ename = StringField(u"英文名", validators=[Optional(),Length(1,64)])
     cname = StringField(u"中文名", validators=[Optional(),Length(1,64)])
     dappstore = StringField(u"appstore下载地址", validators=[Optional(),URL(u"需要输入一个合理的URL")])
@@ -16,6 +17,7 @@ class AppForm(FlaskForm):
 
     def form_to_object(self, app):
         app.projectcode = self.projectcode.data
+        app.sequence = self.sequence.data
         app.ename = self.ename.data
         app.cname = self.cname.data
         app.dappstore = self.dappstore.data
@@ -26,6 +28,7 @@ class AppForm(FlaskForm):
 
     def object_to_form(self,app):
         self.projectcode.data = app.projectcode
+        self.sequence.data = app.sequence
         self.ename.data = app.ename
         self.cname.data = app.cname
         self.dappstore.data = app.dappstore
