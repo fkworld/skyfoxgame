@@ -38,7 +38,11 @@ class App(db.Model):
 
     # 按照sequence的等级排序
     def order_by_sequence(self, apps):
-        apps.sort(key=lambda x:x.sequence)
+        # 由于生产环境中可能没有sequence项，所以这里用try-except作封装
+        try:
+            apps.sort(key=lambda x:x.sequence)
+        except:
+            pass
 
     # 根据id查询app
     def search_by_id(self,id):
