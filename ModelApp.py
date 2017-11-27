@@ -6,6 +6,7 @@ class App(db.Model):
 
     __tablename__ = 'apps'
     id = db.Column(db.Integer, primary_key=True)    # id
+    projectcode = db.Column(db.String(64))          # 项目代码
     cname = db.Column(db.String(64))                # 中文名称
     ename = db.Column(db.String(64))                # 英文名称
     icon_url = db.Column(db.String(64))             # icon的url，因为量级比较小，所以在本地管理；等量级变大以后再说

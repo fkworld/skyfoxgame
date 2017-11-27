@@ -17,8 +17,14 @@
             <div class="row">
                 <div class="col-xs-6">
                     <div class="input-group">
+                        {{ form.code.label(class="input-group-addon") }}
+                        {{ form.code(type="text",class="form-control",placeholder="此项必填写，后面的项目均为选填") }}
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="input-group">
                         {{ form.ename.label(class="input-group-addon") }}
-                        {{ form.ename(type="text",class="form-control",placeholder="此项必填写，后面的项目均为选填") }}
+                        {{ form.ename(type="text",class="form-control") }}
                     </div>
                 </div>
                 <div class="col-xs-6">
