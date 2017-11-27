@@ -51,7 +51,7 @@ class App(db.Model):
     # 获取icon或者show的filename
     def get_filename(self, icon_or_show):
         filename = []
-        filename.append(self.ename.lower().replace(' ', '_'))
+        filename.append(self.projectcode.lower().replace(' ', '_'))
         filename.append(icon_or_show)
         icon_filename = '_'.join(filename)
         return icon_filename
