@@ -48,18 +48,25 @@ class App(db.Model):
     def search_by_id(self,id):
         return self.query.filter_by(id=id).first_or_404()
 
-    # 获取icon或者show的filename
+    # 根据app的projectcode生成icon和show的filename
     def get_filename(self, icon_or_show):
         filename = []
+        filename.append(str(self.id))
         filename.append(self.projectcode.lower().replace(' ', '_'))
         filename.append(icon_or_show)
-        icon_filename = '_'.join(filename)
-        return icon_filename
+        return_filename = '_'.join(filename)
+        # 以'.'为结尾，保存的时候会自动填充
+        return_filename += '.'
+        return return_filename
 
     # 设置icon的url
+    '''
     def set_icon_url(self):
         self.icon_url = "/static/app/" + self.get_filename('icon') + '.png'
+        '''
 
     # 设置show的url
+    '''
     def set_show_url(self):
         self.show_url = "/static/app/" + self.get_filename('show') + '.png'
+        '''

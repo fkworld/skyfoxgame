@@ -19,10 +19,8 @@ def add_app():
     form = AppForm()
     app = App()
     if form.validate_on_submit():
-        print("gggg")
         form.form_to_object(app)
-        app.set_icon_url()
-        app.set_show_url()
+        form.save_app_images(app)
         app.add_app()
         return redirect(url_for('admin_view.index'))
     return render_template('edit_app.html', form=form, title="新建APP")
@@ -37,8 +35,7 @@ def edit_app(app_id):
     app = app.search_by_id(app_id)
     if form.validate_on_submit():
         form.form_to_object(app)
-        app.set_icon_url()
-        app.set_show_url()
+        form.save_app_images(app)
         app.update_app()
         return redirect(url_for('admin_view.index'))
     form.object_to_form(app)

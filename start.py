@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_class
 
 
 def create_app():
@@ -10,6 +11,10 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///server.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
     db.init_app(app)
+
+    app.config['UPLOADS_DEFAULT_DEST'] = 'uploads'
+    configure_uploads(app, appimages)
+    patch_request_class(app, 1024 * 1024 * 1024)
 
     from index_view import index_view
     from app_view import app_view
@@ -22,6 +27,7 @@ def create_app():
 
 
 db = SQLAlchemy()
+appimages = UploadSet('APPIMAGES', IMAGES)
 app = create_app()
 
 if __name__ == '__main__':

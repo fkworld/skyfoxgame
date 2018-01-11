@@ -1,15 +1,20 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,SubmitField,TextAreaField,IntegerField
-from wtforms.validators import Required,Length,URL,Optional
+from wtforms import StringField, SubmitField, TextAreaField, IntegerField
+from wtforms.validators import Required, Length, URL, Optional
+from flask_wtf.file import FileField, FileRequired, FileAllowed
+
 
 class AppForm(FlaskForm):
-    projectcode = StringField(u"项目代码", validators=[Required(),Length(1,64)])
+    projectcode = StringField(u"项目代码", validators=[Required(), Length(1, 64)])
     sequence = IntegerField(u"次序等级", validators=[Optional()])
-    ename = StringField(u"英文名", validators=[Optional(),Length(1,64)])
-    cname = StringField(u"中文名", validators=[Optional(),Length(1,64)])
-    dappstore = StringField(u"appstore下载地址", validators=[Optional(),URL(u"需要输入一个合理的URL")])
-    dgoogle = StringField(u"googleplay下载地址", validators=[Optional(),URL()])
-    dtaptap = StringField(u"taptap地址", validators=[Optional(),URL()])
+    ename = StringField(u"英文名", validators=[Optional(), Length(1, 64)])
+    cname = StringField(u"中文名", validators=[Optional(), Length(1, 64)])
+    from start import appimages
+    icon = FileField(u"图标文件", validators=[Optional(), FileAllowed(appimages, u"请选择图片")])
+    show = FileField(u"展示文件", validators=[Optional(), FileAllowed(appimages, u"请选择图片")])
+    dappstore = StringField(u"appstore下载地址", validators=[Optional(), URL(u"需要输入一个合理的URL")])
+    dgoogle = StringField(u"googleplay下载地址", validators=[Optional(), URL()])
+    dtaptap = StringField(u"taptap地址", validators=[Optional(), URL()])
     ctext = TextAreaField()
     etext = TextAreaField()
 
@@ -26,7 +31,7 @@ class AppForm(FlaskForm):
         app.ctext = self.ctext.data
         app.etext = self.etext.data
 
-    def object_to_form(self,app):
+    def object_to_form(self, app):
         self.projectcode.data = app.projectcode
         self.sequence.data = app.sequence
         self.ename.data = app.ename
@@ -36,3 +41,13 @@ class AppForm(FlaskForm):
         self.dtaptap.data = app.dtaptap
         self.ctext.data = app.ctext
         self.etext.data = app.etext
+
+    # 保存icon和show文件
+    def save_app_images(self, app):
+        from start import appimages
+        if self.icon.data is not None:
+            print(self.icon.data)
+            icon = appfiles.save(self.icon.data, name=app.get_filename('icon'))
+        if self.show.data is not None:
+            print(self.show.data)
+            show = appfiles.save(self.show.data, name=app.get_filename('show'))
