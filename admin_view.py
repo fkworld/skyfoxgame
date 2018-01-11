@@ -38,8 +38,8 @@ def edit_app(app_id):
         form.save_app_images(app)
         app.update_app()
         return redirect(url_for('admin_view.index'))
-    form.object_to_form(app)
-    return render_template('edit_app.html', form=form, title='修改APP')
+    form.object_to_form(app) # 这行应该改。逻辑上应该传入app的内容，然后将app的内容填入表单中。以后再改
+    return render_template('edit_app.html', form=form, app=app, title='修改APP')
 
 
 @admin_view.route('/delete_app/<app_id>', methods=['GET', 'POST'])

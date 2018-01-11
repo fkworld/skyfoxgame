@@ -10,8 +10,8 @@ class AppForm(FlaskForm):
     ename = StringField(u"英文名", validators=[Optional(), Length(1, 64)])
     cname = StringField(u"中文名", validators=[Optional(), Length(1, 64)])
     from start import appimages
-    icon = FileField(u"图标文件", validators=[Optional(), FileAllowed(appimages, u"请选择图片")])
-    show = FileField(u"展示文件", validators=[Optional(), FileAllowed(appimages, u"请选择图片")])
+    icon = FileField(u"图标", validators=[Optional(), FileAllowed(appimages, u"请选择图片")])
+    show = FileField(u"宣传图", validators=[Optional(), FileAllowed(appimages, u"请选择图片")])
     dappstore = StringField(u"appstore下载地址", validators=[Optional(), URL(u"需要输入一个合理的URL")])
     dgoogle = StringField(u"googleplay下载地址", validators=[Optional(), URL()])
     dtaptap = StringField(u"taptap地址", validators=[Optional(), URL()])
@@ -46,8 +46,8 @@ class AppForm(FlaskForm):
     def save_app_images(self, app):
         from start import appimages
         if self.icon.data is not None:
-            print(self.icon.data)
-            icon = appfiles.save(self.icon.data, name=app.get_filename('icon'))
+            icon = appimages.save(self.icon.data, name=app.get_filename('icon'))
+            app.icon_url = appimages.path(icon)
         if self.show.data is not None:
-            print(self.show.data)
-            show = appfiles.save(self.show.data, name=app.get_filename('show'))
+            show = appimages.save(self.show.data, name=app.get_filename('show'))
+            app.show_url = appimages.path(show)

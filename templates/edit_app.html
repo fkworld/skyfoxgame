@@ -29,14 +29,31 @@
                 </div>
             </div>
         </div>
-        {{ form.icon }}
-        {% for error in form.icon.errors %}
-            <span style="color: red;">{{ error }}</span>
-        {% endfor %}
-        {{ form.show }}
-        {% for error in form.show.errors %}
-            <span style="color: red;">{{ error }}</span>
-        {% endfor %}
+        <!-- 图标、宣传图的显示与修改 -->
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="input-group">
+                        {{ form.icon.label(class="input-group-addon") }}
+                        <input class="form-control" type="text" placeholder="在这里上传app的图标，请提前设置好大小。" disabled>
+                    </div>
+                    {{ form.icon() }}
+                    {% for error in form.icon.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="col-sm-6">
+                    <div class="input-group">
+                        {{ form.show.label(class="input-group-addon") }}
+                        <input class="form-control" type="text" placeholder="在这里上传app的宣传图，请提前设置好大小。" disabled>
+                    </div>
+                    {{ form.show() }}
+                    {% for error in form.show.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
         <div class="form-group">
             <div class="row">
                 <div class="col-sm-6">
