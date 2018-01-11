@@ -47,7 +47,7 @@ class AppForm(FlaskForm):
         from start import appimages
         if self.icon.data is not None:
             icon = appimages.save(self.icon.data, name=app.get_filename('icon'))
-            app.icon_url = appimages.path(icon)
+            app.icon_url = appimages.url(icon)
         if self.show.data is not None:
             show = appimages.save(self.show.data, name=app.get_filename('show'))
-            app.show_url = appimages.path(show)
+            app.show_url = appimages.url(show)
