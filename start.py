@@ -4,6 +4,8 @@ from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_cl
 
 
 def create_app():
+    """初始化网站的app
+    """
     app = Flask(__name__)
     app.config['SECRET_KEY'] = '42'
     app.debug = True
@@ -26,10 +28,11 @@ def create_app():
     return app
 
 
+# 初始化数据库，上传限制
 db = SQLAlchemy()
 appimages = UploadSet('APPIMAGES', IMAGES)
+# 调用函数对app进行初始化，gunicorn方式启动需要把这句话放在外面
 app = create_app()
 
 if __name__ == '__main__':
-    # app = create_app() # gunicorn方式启动需要把这句话放在外面
     app.run(debug=True)
