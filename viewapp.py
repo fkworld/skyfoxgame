@@ -5,6 +5,8 @@ view_app = Blueprint('view_app', __name__, template_folder='templates')
 
 @view_app.route('/', methods=['GET', 'POST'])
 def index():
+    """app页面首页
+    """
     from modelapp import App
     app = App()
     apps = app.search_all()
