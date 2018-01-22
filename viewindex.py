@@ -1,21 +1,25 @@
-from flask import Flask,render_template,redirect,request,url_for,flash,Blueprint,g
+from flask import Flask, render_template, redirect, request, url_for, flash, Blueprint, g
 
-index_view = Blueprint('index_view', __name__, template_folder='templates')
+view_index = Blueprint('view_index', __name__, template_folder='templates')
 
-@index_view.route('/', methods=['GET','POST'])
+
+@view_index.route('/', methods=['GET', 'POST'])
 def index():
-    return redirect(url_for("app_view.index"))
+    """网站首页
+    """
+    # 由于首页还没有设计完成，所以这里临时做一个重定向
+    return redirect(url_for("view_app.index"))
 
-@index_view.route('/contact_us')
+
+@view_index.route('/contact_us')
 def contact_us():
+    """联系我们
+    """
     return render_template('contact_us.html')
 
-@index_view.route('/privacy_policy')
-def privacy_policy():
-    return render_template('privacy_policy.html')
 
-@index_view.route('/init_db')
-def init_db():
-    from init_db import init_db
-    init_db()
-    return redirect(url_for("index_view.index"))
+@view_index.route('/privacy_policy')
+def privacy_policy():
+    """隐私政策
+    """
+    return render_template('privacy_policy.html')

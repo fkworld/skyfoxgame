@@ -18,12 +18,12 @@ def create_app():
     configure_uploads(app, appimages)
     patch_request_class(app, 1024 * 1024 * 1024)
 
-    from index_view import index_view
-    from app_view import app_view
-    from admin_view import admin_view
-    app.register_blueprint(index_view, url_prefix='')  # 注意此处不能为'/'，应为空
-    app.register_blueprint(app_view, url_prefix='/app')
-    app.register_blueprint(admin_view, url_prefix='/ilovefangchunpin')
+    from viewindex import view_index
+    from viewapp import view_app
+    from viewadmin import view_admin
+    app.register_blueprint(view_index, url_prefix='')  # 注意此处不能为'/'，应为空
+    app.register_blueprint(view_app, url_prefix='/app')
+    app.register_blueprint(view_admin, url_prefix='/ilovefangchunpin')
 
     return app
 
