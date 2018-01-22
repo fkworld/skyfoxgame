@@ -5,6 +5,8 @@ view_admin = Blueprint('view_admin', __name__, template_folder='templates')
 
 @view_admin.route('/')
 def index():
+    """管理员主页
+    """
     from modelapp import App
     app = App()
     apps = app.search_all()
@@ -14,7 +16,9 @@ def index():
 
 @view_admin.route('/add_app', methods=['GET', 'POST'])
 def add_app():
-    from FormApp import AppForm
+    """新建app页面
+    """
+    from formapp import AppForm
     from modelapp import App
     form = AppForm()
     app = App()
@@ -28,7 +32,9 @@ def add_app():
 
 @view_admin.route('/edit_app/<app_id>', methods=['GET', 'POST'])
 def edit_app(app_id):
-    from FormApp import AppForm
+    """根据id进入编辑app页面
+    """
+    from formapp import AppForm
     from modelapp import App
     app = App()
     form = AppForm()
@@ -44,6 +50,8 @@ def edit_app(app_id):
 
 @view_admin.route('/delete_app/<app_id>', methods=['GET', 'POST'])
 def delete_app(app_id):
+    """根据id删除app
+    """
     from modelapp import App
     app = App()
     app = app.search_by_id(app_id)
