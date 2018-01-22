@@ -5,6 +5,9 @@ from flask_wtf.file import FileField, FileRequired, FileAllowed
 
 
 class AppForm(FlaskForm):
+    """app编辑的表单类
+    """
+    
     projectcode = StringField(u"项目代码", validators=[Required(), Length(1, 64)])
     sequence = IntegerField(u"次序等级", validators=[Optional()])
     ename = StringField(u"英文名", validators=[Optional(), Length(1, 64)])
@@ -21,6 +24,8 @@ class AppForm(FlaskForm):
     submit = SubmitField(u"提交")
 
     def form_to_object(self, app):
+        """表单内容写入app类
+        """
         app.projectcode = self.projectcode.data
         app.sequence = self.sequence.data
         app.ename = self.ename.data
@@ -32,6 +37,8 @@ class AppForm(FlaskForm):
         app.etext = self.etext.data
 
     def object_to_form(self, app):
+        """app内容写入表单
+        """
         self.projectcode.data = app.projectcode
         self.sequence.data = app.sequence
         self.ename.data = app.ename
@@ -42,12 +49,15 @@ class AppForm(FlaskForm):
         self.ctext.data = app.ctext
         self.etext.data = app.etext
 
-    # 保存icon和show文件
     def save_app_images(self, app):
+        """保存app的icon和show的图片
+        """
         from start import appimages
         if self.icon.data is not None:
-            icon = appimages.save(self.icon.data, name=app.get_filename('icon'))
+            icon = appimages.save(
+                self.icon.data, name=app.get_filename('icon'))
             app.icon_url = appimages.url(icon)
         if self.show.data is not None:
-            show = appimages.save(self.show.data, name=app.get_filename('show'))
+            show = appimages.save(
+                self.show.data, name=app.get_filename('show'))
             app.show_url = appimages.url(show)
