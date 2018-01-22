@@ -5,7 +5,7 @@ admin_view = Blueprint('admin_view', __name__, template_folder='templates')
 
 @admin_view.route('/')
 def index():
-    from ModelApp import App
+    from modelapp import App
     app = App()
     apps = app.search_all()
     app.order_by_sequence(apps)
@@ -15,7 +15,7 @@ def index():
 @admin_view.route('/add_app', methods=['GET', 'POST'])
 def add_app():
     from FormApp import AppForm
-    from ModelApp import App
+    from modelapp import App
     form = AppForm()
     app = App()
     if form.validate_on_submit():
@@ -29,7 +29,7 @@ def add_app():
 @admin_view.route('/edit_app/<app_id>', methods=['GET', 'POST'])
 def edit_app(app_id):
     from FormApp import AppForm
-    from ModelApp import App
+    from modelapp import App
     app = App()
     form = AppForm()
     app = app.search_by_id(app_id)
@@ -44,7 +44,7 @@ def edit_app(app_id):
 
 @admin_view.route('/delete_app/<app_id>', methods=['GET', 'POST'])
 def delete_app(app_id):
-    from ModelApp import App
+    from modelapp import App
     app = App()
     app = app.search_by_id(app_id)
     app.delete_app()
