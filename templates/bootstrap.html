@@ -8,25 +8,22 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>SKYFOX GAME</title>
 
+    <!-- JQuery -->
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.slim.min.js"></script>
+    <!-- 注意这里加载的script有前后依赖顺序，有一些库依赖jquery，需要把jquery放在前面 -->
+
     <!-- Bootstrap -->
-    <link href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}" rel="stylesheet"><!-- bootstrap -->
-    <link href="{{ url_for('static', filename='font.css' ) }}" rel="stylesheet"><!-- 自定义字体文件 -->
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
-    <!-- 特别注意此处的引用方式，这是flask模式下的标准引用格式 -->
+    <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/popper.js/1.14.3/popper.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+    <!-- WebUploader -->
+    <link href="https://cdn.bootcss.com/webuploader/0.1.1/webuploader.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/webuploader/0.1.1/webuploader.min.js"></script>
 
     <!-- logo -->
     <link rel="shortcut icon" href="/static/website/logo_block.png">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  	<style> body {padding-top:70px;} </style>
 </head>
 
 <body>
