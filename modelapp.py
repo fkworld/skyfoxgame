@@ -1,46 +1,100 @@
+import datetime
+
+from sqlalchemy import create_engine, Column, Integer, String, Text, Date
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+
 from flask import url_for
-from start import db
+
+# 一些长度常量
+NAME_LENGTH = 64
+URL_LENGTH = 128
+
+# 初始化数据库连接
+Base = declarative_base()
+Engine = create_engine('sqlite:///database/app.db', encoding='utf-8')
+Session = sessionmaker(bind=Engine)
+session = Session()
 
 
-class App(db.Model):
-    """游戏类app主类
+class App(Base):
+    """游戏APP主类
     """
 
     __tablename__ = 'apps'
-    id = db.Column(db.Integer, primary_key=True)    # 项目id
-    projectcode = db.Column(db.String(64))          # 项目代码
-    cname = db.Column(db.String(64))                # 中文名称
-    ename = db.Column(db.String(64))                # 英文名称
-    icon_url = db.Column(db.String(64))             # icon的url
-    show_url = db.Column(db.String(64))             # show的url
-    dappstore = db.Column(db.String(64))            # appstore下载地址
-    dgoogle = db.Column(db.String(64))              # googleplay下载地址
-    dtaptap = db.Column(db.String(64))              # taptap下载地址
-    ctext = db.Column(db.Text)                      # 中文文字介绍
-    etext = db.Column(db.Text)                      # 英文文字介绍
-    sequence = db.Column(db.Integer, default=0)     # 次序，同级的随机排列，0为最高
+
+    id = Column(Integer, primary_key=True)      # 项目id，自增
+    project_code = Column(String(NAME_LENGTH))  # 项目代码
+    # 中文介绍
+    cname = Column(String(NAME_LENGTH))         # 中文名称
+    ctext = Column(Text)                        # 中文文字介绍
+    # 英文介绍
+    ename = Column(String(NAME_LENGTH))         # 英文名称
+    etext = Column(Text)                        # 英文文字介绍
+    # 图标和宣传图的url（最高URL_LENGTH位）
+    icon_url = Column(String(URL_LENGTH))       # icon的url
+    show_url = Column(String(URL_LENGTH))       # show的url
+    # 获取方式
+    get_ios = Column(String(URL_LENGTH))        # appstore地址
+    get_andriod = Column(String(URL_LENGTH))    # googleplay地址
+    get_tap = Column(String(URL_LENGTH))        # taptap下载地址
+    get_html = Column(String(URL_LENGTH))       # h5试玩地址
+    get_wx = Column(String(URL_LENGTH))         # 微信小游戏地址
+    # 上线相关
+    online_date = Column(Date)                  # 上线时间
+    # 排序方式
+    sequence = Column(Integer, default=1)       # 次序，同级的随机排列，0为最高，越低越高
+
+    def init_db(self):
+        """初始化数据表
+        """
+
+        Base.metadata.create_all(Engine)
+
+    def drop_db(self):
+        """删除数据表
+        """
+
+        Base.metadata.drop_all(Engine)
 
     def add_app(self):
-        """添加一个游戏类app
+        """添加一个app到数据库中
         """
-        db.session.add(self)
-        db.session.commit()
+
+        session.add(self)
+        session.commit()
 
     def delete_app(self):
         """删除一个游戏类app
         """
-        db.session.delete(self)
-        db.session.commit()
+        session.delete(self)
+        session.commit()
 
     def update_app(self):
         """更新一个游戏类app
         """
-        db.session.commit()
+        session.commit()
 
     def search_all(self):
-        """查询数据库类所有的游戏类app
+        """查询并返回所有的app
+
+        Returns:
+            list(App()) -- 全部App列表
         """
-        return self.query.all()
+
+        result = session.query(App).all()
+        return result
+
+    def search_app_by_id(self, id):
+        """根据id查询app
+        Arguments:
+            id {number} -- 待查询的id
+        Returns:
+            App() -- 查询结果
+        """
+
+        result = session.query(App).filter_by(id=id).one()
+        return result
 
     def order_by_sequence(self, apps):
         """按照sequence的等级排序

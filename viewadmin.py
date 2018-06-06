@@ -1,5 +1,8 @@
 from flask import Flask, render_template, redirect, request, url_for, flash, Blueprint, g
 
+import modelapp
+import formapp
+
 view_admin = Blueprint('view_admin', __name__, template_folder='templates')
 
 
@@ -18,15 +21,13 @@ def index():
 def add_app():
     """新建app页面
     """
-    from formapp import AppForm
-    from modelapp import App
-    form = AppForm()
-    app = App()
+    form = formapp.AppForm()
+    app = modelapp.App()
     if form.validate_on_submit():
-        form.form_to_object(app)
-        form.save_app_images(app)
-        app.add_app()
+        print("submit")
         return redirect(url_for('view_admin.index'))
+    print(222)
+    print(form.errors)
     return render_template('edit_app.html', form=form, title="新建APP")
 
 

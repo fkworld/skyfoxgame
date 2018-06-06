@@ -1,63 +1,58 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, TextAreaField, IntegerField
-from wtforms.validators import Required, Length, URL, Optional
-from flask_wtf.file import FileField, FileRequired, FileAllowed
+from wtforms import StringField, SubmitField, TextAreaField, IntegerField, DateField
+from wtforms.validators import DataRequired, Length
 
 
 class AppForm(FlaskForm):
-    """app编辑的表单类
+    """app编辑表单
     """
-    
-    projectcode = StringField(u"项目代码", validators=[Required(), Length(1, 64)])
-    sequence = IntegerField(u"次序等级", validators=[Optional()])
-    ename = StringField(u"英文名", validators=[Optional(), Length(1, 64)])
-    cname = StringField(u"中文名", validators=[Optional(), Length(1, 64)])
-    from start import appimages
-    icon = FileField(u"图标", validators=[Optional(), FileAllowed(appimages, u"请选择图片")])
-    show = FileField(u"宣传图", validators=[Optional(), FileAllowed(appimages, u"请选择图片")])
-    dappstore = StringField(u"appstore下载地址", validators=[Optional(), URL(u"需要输入一个合理的URL")])
-    dgoogle = StringField(u"googleplay下载地址", validators=[Optional(), URL()])
-    dtaptap = StringField(u"taptap地址", validators=[Optional(), URL()])
-    ctext = TextAreaField()
-    etext = TextAreaField()
-
-    submit = SubmitField(u"提交")
+    # 项目代码
+    project_code = StringField(u'项目代号')
+    # 中文介绍
+    cname = StringField(u'中文名称')
+    ctext = TextAreaField(u'中文介绍')
+    # 英文介绍
+    ename = StringField(u'英文名称')
+    etext = TextAreaField(u'英文介绍')
+    # 图标和宣传图的url
+    icon_url = StringField(u'图标URL')
+    show_url = StringField(u'宣传图URL')
+    # 获取方式
+    get_ios = StringField(u'APPSTORE获取地址')
+    get_andriod = StringField(u'GOOGLEPLAY获取地址')
+    get_tap = StringField(u'TAPTAP获取地址')
+    get_html = StringField(u'HTML5获取地址')
+    get_wx = StringField(u'微信小游戏获取地址')
+    # 上线时间
+    online_date = StringField(u'上线时间')
+    # 排序方式
+    sequence = StringField(u'次序等级')
+    submit = SubmitField(u'提交')
 
     def form_to_object(self, app):
         """表单内容写入app类
         """
-        app.projectcode = self.projectcode.data
-        app.sequence = self.sequence.data
-        app.ename = self.ename.data
+        app.project_code = self.project_code.data
         app.cname = self.cname.data
-        app.dappstore = self.dappstore.data
-        app.dgoogle = self.dgoogle.data
-        app.dtaptap = self.dtaptap.data
         app.ctext = self.ctext.data
+        app.ename = self.ename.data
         app.etext = self.etext.data
+        app.icon_url = self.icon_url.data
+        app.show_url = self.show_url.data
+        app.get_ios = self.get_ios.data
+        app.get_andriod = self.get_andriod.data
+        app.get_tap = self.get_tap.data
+        app.get_html = self.get_html.data
+        app.get_wx = self.get_wx.data
+        app.sequence = self.sequence.data
+        pass
 
     def object_to_form(self, app):
         """app内容写入表单
         """
-        self.projectcode.data = app.projectcode
-        self.sequence.data = app.sequence
-        self.ename.data = app.ename
-        self.cname.data = app.cname
-        self.dappstore.data = app.dappstore
-        self.dgoogle.data = app.dgoogle
-        self.dtaptap.data = app.dtaptap
-        self.ctext.data = app.ctext
-        self.etext.data = app.etext
+        pass
 
     def save_app_images(self, app):
         """保存app的icon和show的图片
         """
-        from start import appimages
-        if self.icon.data is not None:
-            icon = appimages.save(
-                self.icon.data, name=app.get_filename('icon'))
-            app.icon_url = appimages.url(icon)
-        if self.show.data is not None:
-            show = appimages.save(
-                self.show.data, name=app.get_filename('show'))
-            app.show_url = appimages.url(show)
+        pass

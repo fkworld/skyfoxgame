@@ -23,7 +23,7 @@ def create_app():
     from viewadmin import view_admin
     app.register_blueprint(view_index, url_prefix='')  # 注意此处不能为'/'，应为空
     app.register_blueprint(view_app, url_prefix='/app')
-    app.register_blueprint(view_admin, url_prefix='/ilovefangchunpin')
+    app.register_blueprint(view_admin, url_prefix='/admin')
 
     return app
 

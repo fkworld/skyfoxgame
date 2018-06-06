@@ -1,132 +1,154 @@
 {% extends "base.html" %}
 
-{% block page_left_head %}
-<span class="glyphicon glyphicon-home"></span>
-<a href="/">SKYFOX</a>
-<span class="glyphicon glyphicon-chevron-right"></span>
-<a href="#">{{ title }}</a>
+{% block page_header %}
+<li class="breadcrumb-item active">
+    <a href="#">编辑产品信息</a>
+</li>
 {% endblock %}
 
-{% block page_left_body %}
+{% block page_body %}
 <h2>{{ title }}</h2>
-<hr>
-<div>
-    <form method='POST' enctype="multipart/form-data">
-        {{ form.hidden_tag() }}
-        <div class="form-group">
-            <div class="row">
-                <div class="col-sm-8">
-                    <div class="input-group">
-                        {{ form.projectcode.label(class="input-group-addon") }}
-                        {{ form.projectcode(type="text",class="form-control",placeholder="此项请必填") }}
+<form method='POST' enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <!-- project_code,sequence,online_date -->
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        {{ form.project_code.label(class="input-group-text") }}
                     </div>
+                    {{ form.project_code(type="text",class="form-control",placeholder="此项请必填") }}
                 </div>
-                <div class="col-sm-4">
-                    <div class="input-group">
-                        {{ form.sequence.label(class="input-group-addon") }}
-                        {{ form.sequence(type="text",class="form-control",placeholder="请填入数字；0为最高级") }}
+            </div>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        {{ form.sequence.label(class="input-group-text") }}
                     </div>
+                    {{ form.sequence(type="text",class="form-control",placeholder="此项请必填") }}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        {{ form.online_date.label(class="input-group-text") }}
+                    </div>
+                    {{ form.online_date(type="text",class="form-control",placeholder="此项请必填") }}
                 </div>
             </div>
         </div>
-        <!-- 图标、宣传图的显示与修改 -->
-        <div class="form-group">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="input-group">
-                        {{ form.icon.label(class="input-group-addon") }}
-                        <input class="form-control" type="text" placeholder="在这里上传app的图标，请提前设置好大小。" disabled>
+    </div>
+    <!-- cname,ename -->
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        {{ form.cname.label(class="input-group-text") }}
                     </div>
-                    {{ form.icon() }}
-                    {% for error in form.icon.errors %}
-                    <span style="color: red;">{{ error }}</span>
-                    {% endfor %}
+                    {{ form.cname(type="text",class="form-control",placeholder="此项请必填") }}
                 </div>
-                <div class="col-sm-6">
-                    <div class="input-group">
-                        {{ form.show.label(class="input-group-addon") }}
-                        <input class="form-control" type="text" placeholder="在这里上传app的宣传图，请提前设置好大小。" disabled>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        {{ form.ename.label(class="input-group-text") }}
                     </div>
-                    {{ form.show() }}
-                    {% for error in form.show.errors %}
-                    <span style="color: red;">{{ error }}</span>
-                    {% endfor %}
+                    {{ form.ename(type="text",class="form-control",placeholder="此项请必填") }}
                 </div>
             </div>
         </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="input-group">
-                        {{ form.ename.label(class="input-group-addon") }}
-                        {{ form.ename(type="text",class="form-control") }}
+    </div>
+    <!-- ctext,etext -->
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        {{ form.ctext.label(class="input-group-text") }}
                     </div>
+                    {{ form.ctext(rows="10",type="text",class="form-control",placeholder="此项请必填") }}
                 </div>
-                <div class="col-sm-6">
-                    <div class="input-group">
-                        {{ form.cname.label(class="input-group-addon") }}
-                        {{ form.cname(type="text",class="form-control") }}
+            </div>
+            <div class="col-md-6">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        {{ form.etext.label(class="input-group-text") }}
                     </div>
+                    {{ form.etext(rows="10",type="text",class="form-control",placeholder="此项请必填") }}
                 </div>
             </div>
         </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="input-group">
-                        {{ form.dappstore.label(class="input-group-addon") }}
-                        {{ form.dappstore(type="text",class="form-control",placeholder="如果还没有上线，这里为空即可以，下同") }}
+    </div>
+    <!-- get url -->
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        {{ form.get_ios.label(class="input-group-text") }}
                     </div>
+                    {{ form.get_ios(type="text",class="form-control",placeholder="此项请必填") }}
                 </div>
             </div>
         </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="input-group">
-                        {{ form.dgoogle.label(class="input-group-addon") }}
-                        {{ form.dgoogle(type="text",class="form-control") }}
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        {{ form.get_andriod.label(class="input-group-text") }}
                     </div>
+                    {{ form.get_andriod(type="text",class="form-control",placeholder="此项请必填") }}
                 </div>
             </div>
         </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="input-group">
-                        {{ form.dtaptap.label(class="input-group-addon") }}
-                        {{ form.dtaptap(type="text",class="form-control") }}
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        {{ form.get_tap.label(class="input-group-text") }}
                     </div>
+                    {{ form.get_tap(type="text",class="form-control",placeholder="此项请必填") }}
                 </div>
             </div>
         </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="input-group">
-                        <span class="input-group-addon">编辑文字介绍</span>
-                        <span class="input-group-addon">中文</span>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        {{ form.get_html.label(class="input-group-text") }}
                     </div>
-                    <br>
-                    {{ form.ctext(rows=10,class="form-control") }}
-                </div>
-                <div class="col-sm-6">
-                    <div class="input-group">
-                        <span class="input-group-addon">编辑文字介绍</span>
-                        <span class="input-group-addon">英文</span>
-                    </div>
-                    <br>
-                    {{ form.etext(rows=10,class="form-control") }}
+                    {{ form.get_html(type="text",class="form-control",placeholder="此项请必填") }}
                 </div>
             </div>
         </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-sm-6">
-                    {{ form.submit(class="form-control btn btn-success") }}
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        {{ form.get_wx.label(class="input-group-text") }}
+                    </div>
+                    {{ form.get_wx(type="text",class="form-control",placeholder="此项请必填") }}
                 </div>
             </div>
         </div>
-    </form>
-</div>
+    </div>
+    <!-- submit -->
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-4">
+                {{ form.submit(class="form-control btn btn-success sticky-top") }}
+            </div>
+        </div>
+    </div>
+</form>
 {% endblock %}
