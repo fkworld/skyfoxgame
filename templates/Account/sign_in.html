@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block page_header %}
+<li class="breadcrumb-item"><a>{{ t }}</a></li>
+{% endblock %}
+{% block page_body %}
+<form method="post">
+    {{ form.csrf_token }}
+    {{ form.account.label }}
+    {{ form.account }}
+    {{ form.password.label }}
+    {{ form.password }}
+    <br>
+    {{ form.submit }}
+</form>
+{% endblock %}
