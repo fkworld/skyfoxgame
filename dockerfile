@@ -4,11 +4,10 @@ MAINTAINER fengyong fkworld@foxmail.com
 
 WORKDIR app
 VOLUME ["/app"]
-COPY Pipfile /app/
+COPY requirements.txt /app/
 RUN python3 -m pip install --upgrade pip
-RUN pip install pipenv
-RUN pipenv install --deploy --system
+RUN pip install -r /app/requirements.txt -i https://pypi.douban.com/simple
 
 EXPOSE 80
 
-CMD ["pipenv","run","python3","start.py"]
+CMD ["gunicorn","-w","4","-b","0.0.0.0:80","start:app"]
