@@ -11,9 +11,8 @@ view_account = flask.Blueprint(
 def sign_in():
     form = FormSignIn.FormSignIn()
     if form.validate_on_submit():
-        print(form.account.data)
-        print(form.password.data)
-        return flask.redirect(flask.url_for('view_account.sign_in'))
+        flask.flash('登录成功')
+        return flask.redirect(flask.url_for('view_index.index'))
     return flask.render_template('Account/sign_in.html', t='登录', form=form)
 
 
@@ -21,5 +20,6 @@ def sign_in():
 def sign_up():
     form = FormSignUp.FormSignUp()
     if form.validate_on_submit():
-        return flask.redirect(flask.url_for('view_account.sign_up'))
+        flask.flash('注册成功')
+        return flask.redirect(flask.url_for('view_index.index'))
     return flask.render_template('Account/sign_up.html', t='注册', form=form)

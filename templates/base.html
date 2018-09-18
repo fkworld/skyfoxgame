@@ -29,27 +29,29 @@
 
 <body>
     {% block navbar %}
-    <nav class="navbar navbar-dark bg-primary navbar-expand-lg sticky-top" role="navigation">
-        <a class="navbar-brand" href="#">
-            <img src="/static/website/logo_block.png" width="30" height="30" class="d-inline-block align-top" alt="">
-            狐之空游戏工作室
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="{{ url_for('view_index.index') }}">首页</a>
-                <a class="nav-item nav-link" href="{{ url_for('view_index.game_center') }}">产品中心</a>
-                <a class="nav-item nav-link" href="{{ url_for('view_index.user_agreement') }}">用户协议</a>
-                <a class="nav-item nav-link" href="{{ url_for('view_index.anti_addiction') }}">防沉迷</a>
-                <a class="nav-item nav-link" href="{{ url_for('view_index.parental_controls') }}">家长监护</a>
-                <a class="nav-item nav-link" href="{{ url_for('view_index.dispute_handling') }}">纠纷处理</a>
-                <a class="nav-item nav-link" href="{{ url_for('view_index.customer_service_center') }}">客服中心</a>
-                <a class="nav-item nav-link" href="{{ url_for('view_index.contact_us') }}">联系我们</a>
-                <a class="nav-item nav-link" href="{{ url_for('view_index.sign_in') }}">登录</a>
-                <a class="nav-item nav-link" href="{{ url_for('view_index.sign_up') }}">注册</a>
+    <nav class="navbar navbar-light bg-light navbar-expand-lg sticky-top" role="navigation">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="/static/website/logo_block.png" width="50" height="50" class="d-inline-block align-top" alt="">
+                狐之空游戏工作室
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="{{ url_for('view_index.index') }}">首页</a>
+                    <a class="nav-item nav-link" href="{{ url_for('view_index.game_center') }}">游戏中心</a>
+                    <a class="nav-item nav-link" href="{{ url_for('view_index.user_agreement') }}">用户协议</a>
+                    <a class="nav-item nav-link" href="{{ url_for('view_index.anti_addiction') }}">防沉迷</a>
+                    <a class="nav-item nav-link" href="{{ url_for('view_index.parental_controls') }}">家长监护</a>
+                    <a class="nav-item nav-link" href="{{ url_for('view_index.dispute_handling') }}">纠纷处理</a>
+                    <a class="nav-item nav-link" href="{{ url_for('view_index.customer_service_center') }}">客服中心</a>
+                    <a class="nav-item nav-link" href="{{ url_for('view_index.contact_us') }}">联系我们</a>
+                    <a class="nav-item nav-link" href="{{ url_for('view_index.sign_in') }}">登录</a>
+                    <a class="nav-item nav-link" href="{{ url_for('view_index.sign_up') }}">注册</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -60,6 +62,15 @@
     <div class="container">
         <div class="row">
             <div id="page" class="col-sm-12">
+                {% for message in get_flashed_messages() %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% endfor %}
+
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">

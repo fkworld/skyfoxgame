@@ -8,9 +8,12 @@
     {{ form.csrf_token }}
     {{ form.account.label }}
     {{ form.account }}
+    {% if form.account.errors %}
+    {{ form.account.errors }}
+    {% endif %}
     {{ form.password.label }}
     {{ form.password }}
     <br>
-    {{ form.submit }}
+    {{ form.submit(class='btn btn-primary') }}
 </form>
 {% endblock %}

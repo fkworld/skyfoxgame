@@ -12,7 +12,6 @@ class FormSignUp(flask_wtf.FlaskForm):
         validators=[
             wtforms.validators.DataRequired(message='账号不能为空'),
         ],
-        # widget=wtforms.widgets.TextInput(),
         render_kw={
             'class': 'form-control',
             'placeholder': '请输入账号',
@@ -23,10 +22,23 @@ class FormSignUp(flask_wtf.FlaskForm):
         validators=[
             wtforms.validators.DataRequired(message='密码不能为空'),
         ],
-        widget=wtforms.widgets.PasswordInput(),
         render_kw={
             'class': 'form-control',
             'placeholder': '请输入密码',
+        }
+    )
+    real_name = wtforms.StringField(
+        label='真实姓名',
+        render_kw={
+            'class': 'form-control',
+            'placeholder': '请填写真实姓名',
+        }
+    )
+    id_number = wtforms.StringField(
+        label='身份证号',
+        render_kw={
+            'class': 'form-control',
+            'placeholder': '请填写身份证号',
         }
     )
     cellphone = wtforms.StringField(

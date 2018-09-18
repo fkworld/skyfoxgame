@@ -10,11 +10,15 @@
     {{ form.account }}
     {{ form.password.label }}
     {{ form.password }}
+    {{ form.real_name.label }}
+    {{ form.real_name }}
+    {{ form.id_number.label }}
+    {{ form.id_number }}
     {{ form.cellphone.label }}
     {{ form.cellphone }}
     {{ form.email.label }}
     {{ form.email }}
     <br>
-    {{ form.submit }}
+    {{ form.submit(class='btn btn-primary') }}
 </form>
 {% endblock %}
