@@ -5,9 +5,8 @@ MAINTAINER fengyong fkworld@foxmail.com
 WORKDIR app
 VOLUME ["/app"]
 COPY Pipfile /app/
-COPY Pipfile.lock /app/
-RUN python3 -m pip install --upgrade pip -i https://pypi.douban.com/simple
-RUN pip install pipenv -i https://pypi.douban.com/simple
+RUN python3 -m pip install --upgrade pip
+RUN pip install pipenv
 RUN pipenv install --system
 
 EXPOSE 80
