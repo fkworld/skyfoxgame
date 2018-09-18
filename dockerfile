@@ -6,10 +6,9 @@ WORKDIR app
 VOLUME ["/app"]
 COPY Pipfile /app/
 COPY Pipfile.lock /app/
-RUN cd app
 RUN python3 -m pip install --upgrade pip -i https://pypi.douban.com/simple
 RUN pip install pipenv -i https://pypi.douban.com/simple
-RUN pipenv install
+RUN pipenv install --system
 
 EXPOSE 80
 
