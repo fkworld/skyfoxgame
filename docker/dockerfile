@@ -10,4 +10,4 @@ RUN pipenv install
 
 EXPOSE 80
 
-CMD ["pipenv","run","start.py"]
+CMD ["pipenv","run","python3","start.py"]
