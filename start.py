@@ -12,5 +12,4 @@ app.register_blueprint(view.Account.view_account, url_prefix='/account')
 
 # run
 if __name__ == '__main__':
-    app.run(debug=True)
-
+    app.run(host='0.0.0.0', port=80)
