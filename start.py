@@ -11,4 +11,6 @@ app.register_blueprint(view.Index.view_index, url_prefix='')
 app.register_blueprint(view.Account.view_account, url_prefix='/account')
 
 # run
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
+
