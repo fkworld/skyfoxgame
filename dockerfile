@@ -7,7 +7,7 @@ VOLUME ["/app"]
 COPY Pipfile /app/
 RUN python3 -m pip install --upgrade pip
 RUN pip install pipenv
-RUN pipenv install --system
+RUN pipenv install --deploy --system
 
 EXPOSE 80
 
