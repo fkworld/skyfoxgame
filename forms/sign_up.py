@@ -29,6 +29,9 @@ class FormSignUp(flask_wtf.FlaskForm):
     )
     real_name = wtforms.StringField(
         label='真实姓名',
+        validators=[
+            wtforms.validators.DataRequired(message="请填写真实姓名")
+        ],
         render_kw={
             'class': 'form-control',
             'placeholder': '请填写真实姓名',
@@ -36,9 +39,13 @@ class FormSignUp(flask_wtf.FlaskForm):
     )
     id_number = wtforms.StringField(
         label='身份证号',
+        validators=[
+            wtforms.validators.DataRequired(message="请填写真实身份证号"),
+            wtforms.validators.Regexp("^\d{15}|\d{}18", message="请填写真实身份证号")
+        ],
         render_kw={
             'class': 'form-control',
-            'placeholder': '请填写身份证号',
+            'placeholder': '请填写真实身份证号',
         }
     )
     cellphone = wtforms.StringField(

@@ -6,7 +6,7 @@ class FormSignIn(flask_wtf.FlaskForm):
     account = wtforms.StringField(
         label='账号：',
         validators=[
-            wtforms.validators.InputRequired(message='11111111'),
+            wtforms.validators.DataRequired(message="必须输入用户名"),
         ],
         render_kw={
             'class': 'form-control',
@@ -16,7 +16,7 @@ class FormSignIn(flask_wtf.FlaskForm):
     password = wtforms.PasswordField(
         label='密码',
         validators=[
-            wtforms.validators.DataRequired(),
+            wtforms.validators.DataRequired(message="必须输入密码"),
         ],
         render_kw={
             'class': 'form-control',
