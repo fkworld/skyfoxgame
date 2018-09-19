@@ -1,7 +1,5 @@
 import flask
 import flask_login
-import FormSignIn
-import FormSignUp
 
 view_account = flask.Blueprint(
     'view_account', __name__, template_folder='templates')
@@ -9,7 +7,8 @@ view_account = flask.Blueprint(
 
 @view_account.route('/sign_in', methods=['GET', 'POST'])
 def sign_in():
-    form = FormSignIn.FormSignIn()
+    from forms.sign_in import FormSignIn
+    form = FormSignIn()
     if form.validate_on_submit():
         from models.user import User
         user = User(form.account.data, form.password.data)
@@ -34,7 +33,8 @@ def sign_out():
 
 @view_account.route('/sign_up', methods=['GET', 'POST'])
 def sign_up():
-    form = FormSignUp.FormSignUp()
+    from forms.sign_up import FormSignUp
+    form = FormSignUp()
     if form.validate_on_submit():
         from models.user import User
         user = User(

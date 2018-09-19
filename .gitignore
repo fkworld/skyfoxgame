@@ -1,3 +1,4 @@
 __pycache__
 Pipfile.lock
 venv
+account_server.db
