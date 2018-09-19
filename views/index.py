@@ -11,6 +11,7 @@ def index():
 
 @view_index.route('/game_center')
 def game_center():
+    return flask.redirect(flask.url_for('view_index.index'))
     return flask.render_template('Home/game_center.html', t='游戏中心')
 
 

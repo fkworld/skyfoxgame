@@ -4,13 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-flask = "*"
+werkzeug = "*"
+flask-sqlalchemy = "*"
 flask-login = "*"
 flask-wtf = "*"
-gunicorn = "*"
 
 [dev-packages]
-pylint = "*"
 "autopep8" = "*"
 
 [requires]

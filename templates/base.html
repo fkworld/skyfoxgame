@@ -49,8 +49,12 @@
                     <a class="nav-item nav-link" href="{{ url_for('view_index.dispute_handling') }}">纠纷处理</a>
                     <a class="nav-item nav-link" href="{{ url_for('view_index.customer_service_center') }}">客服中心</a>
                     <a class="nav-item nav-link" href="{{ url_for('view_index.contact_us') }}">联系我们</a>
-                    <a class="nav-item nav-link" href="{{ url_for('view_index.sign_in') }}">登录</a>
-                    <a class="nav-item nav-link" href="{{ url_for('view_index.sign_up') }}">注册</a>
+                    {% if current_user.is_authenticated %}
+                    <a class="nav-item nav-link" href="{{ url_for('view_account.sign_out') }}">登出</a>
+                    {% else %}
+                    <a class="nav-item nav-link" href="{{ url_for('view_account.sign_in') }}">登录</a>
+                    <a class="nav-item nav-link" href="{{ url_for('view_account.sign_up') }}">注册</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
