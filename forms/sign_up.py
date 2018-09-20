@@ -61,5 +61,5 @@ class FormSignUp(flask_wtf.FlaskForm):
         }
     )
     submit = wtforms.SubmitField(
-        label='登录',
+        label='注册',
     )
