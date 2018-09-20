@@ -16,7 +16,7 @@ def sign_in():
             login_user = user.check_password()
             flask_login.login_user(login_user, True)
             flask.flash('登录成功')
-            return flask.redirect(flask.url_for('view_index.index'))
+            return flask.redirect(flask.request.args.get('next') or flask.url_for('view_index.index'))
         else:
             flask.flash('登录失败，请检查账号密码是否正确')
             return flask.redirect(flask.url_for('view_account.sign_in'))

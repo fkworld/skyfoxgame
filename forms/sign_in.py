@@ -26,3 +26,6 @@ class FormSignIn(flask_wtf.FlaskForm):
     submit = wtforms.SubmitField(
         label='登录',
     )
+    sign_up = wtforms.SubmitField(
+        label='注册',
+    )
