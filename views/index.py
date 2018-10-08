@@ -57,4 +57,4 @@ def sign_up():
 
 @view_index.route('/privacy_policy')
 def privacy_policy():
-    return flask.render_template('Home/privacy_policy.html', t='首页')
+    return flask.render_template('Home/privacy_policy.html', t='Privacy Policy')

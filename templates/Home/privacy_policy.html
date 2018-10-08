@@ -1,11 +1,8 @@
 
 {% extends "base.html" %}
 
-{% block page_left_head %}
-<span class="glyphicon glyphicon-home"></span>
-<a href="/">SKYFOX</a>
-<span class="glyphicon glyphicon-chevron-right"></span>
-<a href="{{ url_for('view_index.privacy_policy') }}">PRIVACY POLICY</a>
+{% block page_header %}
+<li class="breadcrumb-item"><a>{{ t }}</a></li>
 <meta http-equiv=Content-Type content="text/html; charset=unicode">
 <link rel=File-List href="Privacy%20Policy.files/filelist.xml">
 <link rel=themeData href="Privacy%20Policy.files/themedata.thmx">
@@ -15,7 +12,7 @@ href="Privacy%20Policy.files/colorschememapping.xml">
 </style>
 {% endblock %}
 
-{% block page_left_body %}
+{% block page_body %}
 
 <div class=Section1>
 
