@@ -6,7 +6,8 @@ view_index = flask.Blueprint(
 
 @view_index.route('/')
 def index():
-    return flask.render_template('Home/index.html', t='首页')
+    # return flask.render_template('Home/index.html', t='首页')
+    return flask.render_template('index.html')
 
 
 @view_index.route('/game_center')
